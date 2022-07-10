@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         var count = 0
         var choice = 100
         var number = Random.nextInt(1, choice + 1)
+        var min = 1
+        var max = choice
         binding.textOutput.text = "Загадываем число от 1 до $choice"
 
         fun newGame() {
@@ -28,11 +30,19 @@ class MainActivity : AppCompatActivity() {
             binding.countNumber.text = "Ход № $count"
         }
 
+        fun hints(n: Int) {
+            if (n > number) max = n
+            if (n < number) min = n
+            binding.hint.text = "Загаданное число находится между $min и $max"
+            if (n == number) binding.hint.text = "Вы отгадали загаданное число!"
+        }
+
         binding.button.setOnClickListener {
             if (binding.inputTextEdit.text?.isEmpty() == true) {
                 binding.textOutput.text = "Необходимо ввести число!"
             } else {
-                var n = binding.inputTextEdit.text.toString().toInt()
+                val n = binding.inputTextEdit.text.toString().toInt()
+                hints(n)
                 count++
                 binding.gameNumber.text = "Игра № $game"
                 binding.countNumber.text = "Ход № $count"
@@ -45,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                     if (count == 1) {
                         binding.textOutput.text = "Вот это везение!!! Угаданно с первой попытки!"
                     } else binding.textOutput.text =
-                        "Вы угадали! Загаданное число $number. Отгадано за $count ходов!"
+                        "Вы угадали!\nЗагаданное число $number.\nОтгадано за $count ходов!"
                 }
                 binding.inputTextEdit.text?.clear()
             }
