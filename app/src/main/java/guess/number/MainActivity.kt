@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 if (n == number) {
                     binding.button.isVisible = false
                     if (count == 1) {
-                        binding.textOutput.text = "Вот это везение!!! Угаданно с первой попытки!"
+                        binding.textOutput.text = "Вот это везение!!!\nЗагаданное число $number.\nУгаданно с первой попытки!"
                     } else binding.textOutput.text =
                         "Вы угадали!\nЗагаданное число $number.\nОтгадано за $count ходов!"
                 }

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Guessnumber</string>
+    <string name="app_name">Угадай число!</string>
     <string name="request_hint">Введите число</string>
 </resources>
