@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
             if (binding.inputTextEdit.text?.isEmpty() == true) {
                 binding.textOutput.text = "Необходимо ввести число!"
+            } else if (binding.inputTextEdit.text.toString().toLong() > choice ||binding.inputTextEdit.text.toString().toInt() < 1) {
+                binding.textOutput.text = "Число должно быть от 1 до $choice!"
+                binding.inputTextEdit.text?.clear()
             } else {
                 val n = binding.inputTextEdit.text.toString().toInt()
                 hints(n)
