@@ -29,22 +29,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
-            var n = binding.inputText.text.toString().toInt()
-            count++
-            binding.gameNumber.text = "Игра № $game"
-            binding.countNumber.text = "Ход № $count"
-            if (n > number) binding.textOutput.text =
-                "Вы ввели $n. Загаданное число меньше"
-            if (n < number) binding.textOutput.text =
-                "Вы ввели $n. Загаданное число больше"
-            if (n == number) {
-                binding.button.isVisible = false
-                if (count == 1) {
-                    binding.textOutput.text = "Вот это везение!!! Угаданно с первой попытки!"
-                } else binding.textOutput.text =
-                    "Вы угадали! Загаданное число $number. Отгадано за $count ходов!"
+            if (binding.inputTextEdit.text?.isEmpty() == true) {
+                binding.textOutput.text = "Необходимо ввести число!"
+            } else {
+                var n = binding.inputTextEdit.text.toString().toInt()
+                count++
+                binding.gameNumber.text = "Игра № $game"
+                binding.countNumber.text = "Ход № $count"
+                if (n > number) binding.textOutput.text =
+                    "Вы ввели $n. Загаданное число меньше"
+                if (n < number) binding.textOutput.text =
+                    "Вы ввели $n. Загаданное число больше"
+                if (n == number) {
+                    binding.button.isVisible = false
+                    if (count == 1) {
+                        binding.textOutput.text = "Вот это везение!!! Угаданно с первой попытки!"
+                    } else binding.textOutput.text =
+                        "Вы угадали! Загаданное число $number. Отгадано за $count ходов!"
+                }
+                binding.inputTextEdit.text?.clear()
             }
-            binding.inputText.text.clear()
         }
 
         binding.newGame.setOnClickListener {
