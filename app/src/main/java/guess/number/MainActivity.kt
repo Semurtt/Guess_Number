@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun hints(n: Int) {
-            if (n > number) max = n
-            if (n < number) min = n
+            if (n > number && n < max) max = n
+            if (n < number && n > min) min = n
             binding.hint.text = "Загаданное число находится между $min и $max"
             if (n == number) binding.hint.text = "Вы отгадали загаданное число!"
         }
@@ -52,7 +52,9 @@ class MainActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
             if (binding.inputTextEdit.text?.isEmpty() == true) {
                 binding.textOutput.text = "Необходимо ввести число!"
-            } else if (binding.inputTextEdit.text.toString().toLong() > choice ||binding.inputTextEdit.text.toString().toInt() < 1) {
+            } else if (binding.inputTextEdit.text.toString()
+                    .toLong() > choice || binding.inputTextEdit.text.toString().toInt() < 1
+            ) {
                 binding.textOutput.text = "Число должно быть от 1 до $choice!"
                 binding.inputTextEdit.text?.clear()
             } else {
@@ -68,7 +70,8 @@ class MainActivity : AppCompatActivity() {
                 if (n == number) {
                     binding.button.isVisible = false
                     if (count == 1) {
-                        binding.textOutput.text = "Вот это везение!!!\nЗагаданное число $number.\nУгаданно с первой попытки!"
+                        binding.textOutput.text =
+                            "Вот это везение!!!\nЗагаданное число $number.\nУгаданно с первой попытки!"
                     } else binding.textOutput.text =
                         "Вы угадали!\nЗагаданное число $number.\nОтгадано за $count ходов!"
                 }
