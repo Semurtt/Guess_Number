@@ -3,6 +3,7 @@ package guess.number
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
+import com.google.android.material.switchmaterial.SwitchMaterial
 import guess.number.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity() {
             binding.button.isVisible = true
             count = 0
             game++
+            min = 1
+            max = choice
+            binding.hint.text = "Вы запустили новую игру №$game"
             binding.gameNumber.text = "Игра № $game"
             binding.countNumber.text = "Ход № $count"
         }
@@ -35,6 +39,14 @@ class MainActivity : AppCompatActivity() {
             if (n < number) min = n
             binding.hint.text = "Загаданное число находится между $min и $max"
             if (n == number) binding.hint.text = "Вы отгадали загаданное число!"
+        }
+
+        binding.hintEnable.setOnCheckedChangeListener { _, isCheched ->
+            if (isCheched) {
+                binding.hint.isVisible = true
+            } else {
+                binding.hint.isVisible = false
+            }
         }
 
         binding.button.setOnClickListener {

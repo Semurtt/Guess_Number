@@ -80,8 +80,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/newGame" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/hintEnable"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="@id/newGame"
+        app:layout_constraintTop_toBottomOf="@id/newGame" />
+
+    <TextView
+        android:id="@+id/hintSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Включить подсказки"
+        app:layout_constraintStart_toEndOf="@id/hintEnable"
+        app:layout_constraintTop_toTopOf="@id/hintEnable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
